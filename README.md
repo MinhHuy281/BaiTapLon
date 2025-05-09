@@ -17,6 +17,13 @@ Script Python này giúp bạn tự động thu thập tin tức từ **trang ch
 - Có thể thiết lập **lên lịch chạy tự động hàng ngày** lúc `06:00` sáng bằng thư viện `schedule`.
 
 ---
+## Các Bước đẩy File lên GitHub
+**-Bước 1:** git init
+**-Bước 2:** git add .
+**-Bước 3:** git commit -m "first commit"
+**-Bước 4:** git branch -M main
+**-Bước 5:** git remote add origin https://github.com/MinhHuy281/BaiTapLon.git
+**-Bước 6:** git push -u origin main
 
 ## 🧰 Yêu cầu
 
