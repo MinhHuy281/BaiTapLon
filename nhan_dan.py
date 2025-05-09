@@ -4,6 +4,8 @@ import pandas as pd
 import time
 import schedule
 
+# Bước 1: Tạo hàm Lấy nội dung bài viết
+
 def lay_noi_dung_bai_viet(link_bai_viet):
     try:
         res = requests.get(link_bai_viet, headers={'User-Agent': 'Mozilla/5.0'})
@@ -16,6 +18,8 @@ def lay_noi_dung_bai_viet(link_bai_viet):
     except Exception as e:
         print(f'Lỗi khi lấy nội dung bài viết: {e}')
         return ''
+    
+# Bước 2: Tạo hàm Lấy tin tức của bài báo
 
 def lay_tin_nhan_dan():
     url = 'https://nhandan.vn/'
@@ -61,6 +65,8 @@ def lay_tin_nhan_dan():
             print(f'Lỗi xử lý bài: {e}')
             continue
 
+# Bước 3: Lưu dữ liệu thành file CSV
+
     if bai_viet_list:
         df = pd.DataFrame(bai_viet_list)
         df.to_csv('tin_nhandan.csv', index=False, encoding='utf-8-sig')
@@ -68,10 +74,12 @@ def lay_tin_nhan_dan():
     else:
         print('Không có bài viết nào đủ dữ liệu để lưu.')
 
-# Hẹn giờ chạy lúc 6:00 sáng mỗi ngày
-schedule.every().day.at("06:00").do(lay_tin_nhan_dan)
+# Bước 4: Lên lịch tự động chạy lúc 6:00 sáng mỗi ngày
 
+schedule.every().day.at("06:00").do(lay_tin_nhan_dan)
 print("Chương trình đã khởi động. Đang chờ đến 06:00 sáng để chạy...")
+
+# Bước 5: Vòng lặp chính để kiểm tra lịch
 
 while True:
     schedule.run_pending()
